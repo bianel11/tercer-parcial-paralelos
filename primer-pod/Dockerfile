@@ -7,7 +7,8 @@ WORKDIR /app
 # Copiar archivos de la aplicación
 COPY package*.json ./
 COPY index.js ./
-COPY src ./src
+COPY jumpSearch.js ./
+COPY linearSearch.js ./
 
 # Instalar dependencias
 RUN npm install
