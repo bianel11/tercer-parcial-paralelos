@@ -11,14 +11,16 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send(`
+  <h1>Busqueda de un elemento en un arreglo utilizando jumpSearch</h1>
   <form action="/jumpSearch" method="post">
-    <input type="text" name="arr" />
-    <input type="text" name="target" />
+    <input type="text" name="arr" value="1, 2, 3, 5, 6, 7" />
+    <input type="text" name="target" value="2" />
     <button type="submit">jumpSearch</button>
   </form>
+  <h1>Busqueda de un elemento en un arreglo utilizando linearSearch</h1>
   <form action="/linearSearch" method="post">
-    <input type="text" name="arr" />
-    <input type="text" name="target" />
+    <input type="text" name="arr" value="1, 2, 3, 4, 5" />
+    <input type="text" name="target" value="2" />
     <button type="submit">linearSearch</button>
   </form>
 `);
