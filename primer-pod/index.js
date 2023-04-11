@@ -13,16 +13,27 @@ app.get("/", (req, res) => {
   res.send(`
   <h1>Busqueda de un elemento en un arreglo utilizando jumpSearch</h1>
   <form action="/jumpSearch" method="post">
-    <input type="text" name="arr" value="1, 2, 3, 5, 6, 7" />
-    <input type="text" name="target" value="2" />
+    <input type="text" name="arr" value="" required/>
+    <input type="text" name="target" value="2" required/>
     <button type="submit">jumpSearch</button>
   </form>
   <h1>Busqueda de un elemento en un arreglo utilizando linearSearch</h1>
   <form action="/linearSearch" method="post">
-    <input type="text" name="arr" value="1, 2, 3, 4, 5" />
-    <input type="text" name="target" value="2" />
+    <input type="text" name="arr" value="" required />
+    <input type="text" name="target" value="2" required/>
     <button type="submit">linearSearch</button>
   </form>
+  <script>
+  window.onload = function() {
+    let arrInputs = document.getElementsByName("arr");
+    if (arrInputs[0].value === "") {
+      let randomArr = Array.from({length: 5}, () => Math.floor(Math.random() * 50) + 1);
+      const sort = [...randomArr].sort((a, b) => a - b).join(", ");
+      arrInputs[0].value = sort;
+      arrInputs[1].value = randomArr.join(", ");
+    }
+  };          
+  </script>
 `);
 });
 

@@ -14,15 +14,26 @@ app.get("/", (req, res) => {
   res.send(`
           <h1>Busqueda de un elemento en un arreglo utilizando binarySearch</h1>
           <form action="/binarySearch" method="post">
-            <input type="text" name="arr" value="1, 2, 4, 5, 6"/>
-            <input type="text" name="target" value="2" />
+            <input type="text" name="arr" value="" required />
+            <input type="text" name="target" value="2" required/>
             <button type="submit">binarySearch</button>
           </form>
           <h1>Ordenamiento de un arreglo utilizando bubbleSort</h1>
           <form action="/bubbleSort" method="post">
-            <input type="text" name="arr" value="10, 35, 34, 9, 6"/>
+            <input type="text" name="arr" value="" required/>
             <button type="submit">bubbleSort</button>
           </form>
+          <script>
+          window.onload = function() {
+            let arrInputs = document.getElementsByName("arr");
+            if (arrInputs[0].value === "") {
+              let randomArr = Array.from({length: 5}, () => Math.floor(Math.random() * 50) + 1);
+              const sort = [...randomArr].sort((a, b) => a - b).join(", ");
+              arrInputs[0].value = sort;
+              arrInputs[1].value = randomArr.join(", ");
+            }
+          };          
+          </script>
         `);
 });
 
